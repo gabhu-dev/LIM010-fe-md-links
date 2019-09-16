@@ -3,20 +3,18 @@
     "version": "1.0.0",
     "description": "markdown links",
     "main": "index.js",
-    "directories": {
-        "test": "test"
-    },
+    "keywords": [
+        "javascript",
+        "jest"
+    ],
     "scripts": {
-        "test": "jest --coverage"
+        "test": "jest --coverage",
+        "eslint": "eslint --ext .js src/ test/"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gabhu-dev/LIM010-fe-md-links.git"
     },
-    "keywords": [
-        "javascript",
-        "jest"
-    ],
     "devDependencies": {
         "@babel/core": "^7.2.2",
         "@babel/plugin-transform-modules-commonjs": "^7.2.0",
@@ -27,6 +25,9 @@
         "eslint-plugin-import": "^2.18.2",
         "eslint-plugin-jest": "^22.1.2",
         "jest": "^24.9.0"
+    },
+    "dependencies": {
+        "babel-install": "^2.1.0"
     },
     "author": "Gabriela Ignacio",
     "license": "MIT",
