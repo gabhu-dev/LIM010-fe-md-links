@@ -1,26 +1,23 @@
-// aqui van mis funciones
-// export const sum = (text, word) => {
-//     const concat = text + word;
-//     return concat;
-// };
-
-// export const restar = (text, word) => {
-//     const concat = text + word;
-//     return concat;
-// };
-// recibir la ruta
-// si es ruta relativa convertirla a absoluta
-// recorrer el directorio
-// preguntar si hay archivo ahi
-//
-// console.log('hello');
 //------------COMENZANDO-----------------
+
 const path = require('path');
-// Es absoluta ???
-export const isAbsoluteOrRelative = (myPath) => {
-    if (path.isAbsolute(myPath)) {
-        return path;
+const fs = require('fs');
+
+// existe la ruta?
+export const existRoute = (route) => {
+    if (fs.existsSync(route)) {
+        return 'si existe';
     } else {
-        return path.resolve(myPath);
+        return 'no existe';
     }
 }
+
+// Es absoluta ???
+export const isAbsoluteOrRelative = (myPath) => {
+        if (path.isAbsolute(myPath)) {
+            return path;
+        } else {
+            return path.resolve(myPath);
+        }
+    }
+    // hay archivos?
