@@ -9,9 +9,13 @@
 // });
 import { isAbsoluteOrRelative } from '../src/index.js';
 
-describe('Esta función debería botar booleano', () => {
-    it('deberia poder distinguir', () => {
-        isAbsoluteOrRelative('C:\Users\gabhu\Desktop\projects-gabhu\test de dany con mocks de firebase y firestore');
-        expect('C:\Users\gabhu\Desktop\projects-gabhu\test de dany con mocks de firebase y firestore').toBe('C:\Users\gabhu\Desktop\projects-gabhu\test de dany con mocks de firebase y firestore');
+describe('Esta función debería saber distinguir la absoluta de la relativa', () => {
+    it('deberia poder distinguir una absoluta', () => {
+        expect('C:\Users\Files\gabhu.js').toBe('C:\Users\Files\gabhu.js');
+        isAbsoluteOrRelative('C:\Users\Files\gabhu.js');
+    })
+    it('deberia poder distinguir una relativa', () => {
+        isAbsoluteOrRelative('..\gabhu.js');
+        expect('C:\Users\Files\gabhu.js').toBe('C:\Users\Files\gabhu.js');
     })
 })

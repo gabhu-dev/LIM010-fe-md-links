@@ -21,6 +21,6 @@ export const isAbsoluteOrRelative = (myPath) => {
     if (path.isAbsolute(myPath)) {
         return path;
     } else {
-        return 'error';
+        return path.resolve(myPath);
     }
 }
