@@ -13,11 +13,21 @@ export const existRoute = (route) => {
 }
 
 // Es absoluta ???
-export const isAbsoluteOrRelative = (myPath) => {
-        if (path.isAbsolute(myPath)) {
-            return path;
-        } else {
-            return path.resolve(myPath);
-        }
+export const isAbsoluteOrRelative = (myRoute) => {
+    if (path.isAbsolute(myRoute)) {
+        return path;
+    } else {
+        return path.resolve(myRoute);
     }
-    // hay archivos?
+}
+
+// hay archivos?
+export const isFile = (myRoute) => {
+    if (fs.stats.isFile(myRoute)) {
+        return 'es archivo';
+    } else if (fs.stats.isDirectory(myRoute)) {
+        return 'es directorio';
+    } else {
+        return 'no es ni archivo ni directorio'
+    }
+}
