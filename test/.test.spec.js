@@ -1,6 +1,6 @@
 // testear mis funciones
 
-import { isAbsoluteOrRelative, existRoute, extensions, isFileOrDirectory, saveExtensions, saveFiles } from '../src/index.js';
+import { isAbsoluteOrRelative, existRoute, extensions, isFileOrDirectory, saveExtensions, saveFiles, readFiles } from '../src/index.js';
 
 
 describe('Esta función debería saber distinguir la absoluta de la relativa', () => {
@@ -50,5 +50,12 @@ describe('funcion saveExtensions', () => {
     it('deberia poder guardar en el array', () => {
         saveFiles('README.md');
         expect('README.md').toBe('README.md');
+    })
+})
+
+describe('funcion readFiles', () => {
+    it('debería poder leer un archivo', () => {
+        readFiles('README.md');
+        expect()
     })
 })

@@ -43,3 +43,16 @@ export const saveFiles = (files) => {
     arrayExtensions.push(files);
     return arrayExtensions;
 }
+
+// const readFiles = ('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\README.md') => {
+//         fs.readFile('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\README.md', (err, data) => {
+//             if (err) throw err;
+//             console.log(data);
+//         });
+//     }
+
+// fs.readFile('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\README.md', (err, data) => {
+//     if (err) throw err;
+//     console.log(data);
+// });
+// console.log('hello world');
