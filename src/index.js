@@ -39,17 +39,9 @@ export const saveFiles = (files) => {
   arrayExtensions.push(files);
   return arrayExtensions;
 };
-// eslint-disable-next-line no-console
 
-// const readFiles = ('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\README.md') => {
-//    fs.readFile('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\README.md', (err, data) => {
-//             if (err) throw err;
-//             console.log(data);
-//         });
-//     }
+export const readFiles = (files) => {
+  const read = fs.readFileSync(files, 'utf8');
+  return read;
+};
 
-// fs.readFile('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\README.md', (err, data) => {
-//     if (err) throw err;
-//     console.log(data);
-// });
-// console.log('hello world');

@@ -1,6 +1,6 @@
 // testear mis funciones
 
-import { isAbsoluteOrRelative, existRoute, extensions, isFileOrDirectory, saveExtensions, saveFiles, readFiles } from '../src/index.js';
+import { isAbsoluteOrRelative, existRoute, extensions, isFileOrDirectory, saveFiles, readFiles } from '../src/index.js';
 
 
 describe('Esta función debería saber distinguir la absoluta de la relativa', () => {
@@ -35,8 +35,8 @@ describe(' function extensions', () => {
     expect(extensions('C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\README.md')).toBe('.md');
   })
   it('deberia salir error porque no se encontró extension', () => {
-    extensions('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\src');
-    expect('no hay extensiones').toBe('no hay extensiones');
+ 
+    expect(extensions('C:\\Users\\gabhu\\Desktop\\markdown\\LIM010-fe-md-links\\src')).toBe('no hay extensiones');
   })
 })
 describe('funcion saveExtensions', () => {
@@ -46,9 +46,8 @@ describe('funcion saveExtensions', () => {
   })
 })
 
-// describe('funcion readFiles', () => {
-//     it('debería poder leer un archivo', () => {
-//         readFiles('README.md');
-//         expect()
-//     })
-// })
+describe('funcion readFiles', () => {
+  it('debería poder leer un archivo', () => {
+    expect(readFiles('C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\pruebas\\pruebaREADME.md')).toBe('# hello world');
+  })
+})
