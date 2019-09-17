@@ -9,17 +9,20 @@
     ],
     "scripts": {
         "test": "jest --coverage",
-        "eslint": "eslint --ext .js src/ test/"
+        "eslint": "eslint --ext .js src/ test/",
+        "build": "babel src -d lib"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gabhu-dev/LIM010-fe-md-links.git"
     },
     "devDependencies": {
-        "@babel/core": "^7.2.2",
+        "@babel/cli": "^7.6.0",
+        "@babel/core": "^7.6.0",
         "@babel/plugin-transform-modules-commonjs": "^7.2.0",
         "babel-core": "^7.0.0-bridge.0",
         "babel-jest": "^24.8.0",
+        "babel-cli": "^6.0.0",
         "eslint": "^6.3.0",
         "eslint-config-airbnb-base": "^13.2.0",
         "eslint-plugin-import": "^2.18.2",
