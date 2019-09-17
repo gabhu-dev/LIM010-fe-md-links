@@ -22,12 +22,24 @@ export const isAbsoluteOrRelative = (myRoute) => {
 }
 
 // hay archivos?
-export const isFile = (myRoute) => {
-    if (fs.stats.isFile(myRoute)) {
+export const isFileOrDirectory = (myRoute) => {
+    if (fs.statSync(myRoute).isFile()) {
         return 'es archivo';
-    } else if (fs.stats.isDirectory(myRoute)) {
-        return 'es directorio';
     } else {
-        return 'no es ni archivo ni directorio'
+        return 'es directorio';
     }
+}
+export const extensions = (myRoute) => {
+    if (path.extname(myRoute).length > 0) {
+        return path.extname(myRoute);
+    } else {
+        return 'no hay extensiones';
+    }
+}
+
+// guardar archivos en un array
+export const saveFiles = (files) => {
+    let arrayExtensions = [];
+    arrayExtensions.push(files);
+    return arrayExtensions;
 }

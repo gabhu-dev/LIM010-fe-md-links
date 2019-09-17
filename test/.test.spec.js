@@ -1,7 +1,7 @@
 // testear mis funciones
 
-import { isAbsoluteOrRelative, existRoute } from '../src/index.js';
-import { isFile } from '@babel/types';
+import { isAbsoluteOrRelative, existRoute, extensions, isFileOrDirectory, saveExtensions, saveFiles } from '../src/index.js';
+
 
 describe('Esta función debería saber distinguir la absoluta de la relativa', () => {
     it('deberia poder distinguir una absoluta', () => {
@@ -27,15 +27,28 @@ describe('Esta función debería poder determinar si existe la ruta', () => {
 
 describe('Esta función debería poder determinar si es un archivo', () => {
     it('existe archivo', () => {
-        isFile('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\src\index.js');
+        isFileOrDirectory('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\src\index.js');
         expect('es archivo').toBe('es archivo');
     })
     it('existe directorio', () => {
-        isFile('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\src');
+        isFileOrDirectory('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\src');
         expect('es directorio').toBe('es directorio');
     })
-    it('no e ninguno de los dos', () => {
-        isFile('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\src');
-        expect('es directorio').toBe('es directorio');
+})
+
+describe(' function extensions', () => {
+    it('deberia poder obtener la extension de la  ruta', () => {
+        extensions('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\README.md');
+        expect('.md').toBe('.md');
+    })
+    it('deberia salir error porque no se encontró extension', () => {
+        extensions('C:\Users\gabhu\Desktop\markdown\LIM010-fe-md-links\src');
+        expect('no hay extensiones').toBe('no hay extensiones');
+    })
+})
+describe('funcion saveExtensions', () => {
+    it('deberia poder guardar en el array', () => {
+        saveFiles('README.md');
+        expect('README.md').toBe('README.md');
     })
 })
