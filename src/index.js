@@ -45,3 +45,10 @@ export const readFiles = (files) => {
   return read;
 };
 
+// preguntar si tiene links
+
+export const extLinks = (readFile) => {
+const md = require('markdown-it')();
+const result = md.renderInline(readFile);
+return result;
+}
