@@ -2,7 +2,8 @@
 
 const path = require('path');
 const fs = require('fs');
-
+const md = require('markdown-it')();
+const linkify = require('linkify-it')();
 // existe la ruta?
 export const existRoute = (route) => {
   if (fs.existsSync(route)) {
@@ -47,8 +48,9 @@ export const readFiles = (files) => {
 
 // preguntar si tiene links
 
-export const extLinks = (readFile) => {
-const md = require('markdown-it')();
-const result = md.renderInline(readFile);
-return result;
-}
+export const extLinks = (read) => {
+  const convertHtml = md.renderInline(read);
+  const extLinks = linkify.match(read);
+  return result;
+};
+// acuerdate de que pasandole o no pasandole read esta saliendo igual en linky revisalo bien.
