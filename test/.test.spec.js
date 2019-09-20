@@ -1,6 +1,7 @@
 // testear mis funciones
 
-import { isAbsoluteOrRelative, existRoute, extensions, isFileOrDirectory, saveFiles, readFiles } from '../src/index.js';
+import { isAbsoluteOrRelative, existRoute, extensions, isFileOrDirectory, saveFiles, extLinks} from '../src/path-directory.js';
+
 
 
 describe('Esta función debería saber distinguir la absoluta de la relativa', () => {
@@ -46,8 +47,13 @@ describe('funcion saveExtensions', () => {
   })
 })
 
-describe('funcion readFiles', () => {
-  it('debería poder leer un archivo', () => {
-    expect(readFiles('C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\pruebas\\pruebaREADME.md')).toBe('# hello world');
+// describe('funcion readFiles', () => {
+//   it('debería poder leer un archivo', () => {
+//     expect(readFiles('C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\pruebas\\pruebaREADME.md')).toBe('# hello world');
+//   })
+// })
+describe('funcion extLinks',()=>{
+  it('deberia poder leer y extraer todos los links',() => {
+    expect(extLinks('C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\pruebaREADME.md')).toBe([{ href: 'https://nodejs.org/es/', title: null, text: 'Node.js' }]);
   })
 })
