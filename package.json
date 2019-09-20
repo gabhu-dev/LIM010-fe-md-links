@@ -32,7 +32,8 @@
     "dependencies": {
         "babel-install": "^2.1.0",
         "linkify-it": "^2.2.0",
-        "markdown-it": "^10.0.0"
+        "markdown-it": "^10.0.0",
+        "marked": "^0.7.0"
     },
     "author": "Gabriela Ignacio",
     "license": "MIT",
