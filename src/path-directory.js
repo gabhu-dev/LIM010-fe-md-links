@@ -60,6 +60,11 @@ export const extLinks = (files) => {
   marked(readFile, { renderer: render });
   return arrayLinks;
 };
-
-// eslint-disable-next-line max-len
 // console.log(extLinks('C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\pruebaREADME.md'));
+// ver si los links estan correctos
+const fecth = (fileLink)=>{
+  const url =fileLink;
+  fetch(url)
+  .then(response => {response.json})
+  .catch(err=>console.log(err))
+}

@@ -54,6 +54,6 @@ describe('funcion saveExtensions', () => {
 // })
 describe('funcion extLinks',()=>{
   it('deberia poder leer y extraer todos los links',() => {
-    expect(extLinks('C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\pruebaREADME.md')).toBe([{ href: 'https://nodejs.org/es/', title: null, text: 'Node.js' }]);
+    expect(extLinks('C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\pruebaREADME.md')).toStrictEqual([{ href: 'https://nodejs.org/es/', title: null, text: 'Node.js' }]);
   })
 })
