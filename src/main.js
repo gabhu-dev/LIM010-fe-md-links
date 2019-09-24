@@ -3,12 +3,12 @@ import { existRoute ,isAbsoluteOrRelative,isFileOrDirectory,extensions} from './
 
 const mdLinks = (route, options) => {
   if(existRoute(route)=== true){
-      if(isAbsoluteOrRelative(route)=== true){
-          if(isFileOrDirectory(route)=== true){
-              if(extensions(route)=== true){
+    if(isAbsoluteOrRelative(route)=== true){
+      if(isFileOrDirectory(route)=== true){
+        if(extensions(route)=== true){
 
-              }
-          }
-      }  }
+        }
+      }
+    }  }
 }
 console.log(process.argv[2]);

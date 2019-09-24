@@ -61,8 +61,8 @@ file:'C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-link
 // validateLink(arrayOfLinks)
 // .then((res)=>{
 //   console.log(res);
-// })
-// funcion stats
+// }) 
+// funcion stats -- verificar
 export const statsLink = (arrayOfLinks) => {
   const total = arrayOfLinks.length;
   const unique = arrayOfLinks.filter((item, index, array) => {
@@ -72,6 +72,6 @@ export const statsLink = (arrayOfLinks) => {
 }
 console.log(statsLink(arrayOfLinks));
 // funcion stats-validate
-export const statsValidate = () => {
-
+export const statsValidate = (statsLink,brokens) => {
+return {statsLink,}
 }
