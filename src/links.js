@@ -43,3 +43,17 @@ export const validateLink = (arrayOfLinks) => {
         }));
     return Promise.all(promiseLink);
 };
+
+// funcion stats
+export const statsLink = (arrayOfLinks) => {
+    const total = arrayOfLinks.length;
+    const unique = arrayOfLinks.filter((item, index, array) => {
+        return array.indexOf(item) === index;
+    })
+    return { Total: total, Unique: unique.length }
+}
+
+// funcion stats-validate
+export const statsValidate = () => {
+
+}
