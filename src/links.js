@@ -19,10 +19,10 @@ export const extLinks = (arrayFiles) => {
     });
     return arrayOfLinks;
 };
-const arrayFiles = [
-  'C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme.md','C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme-2.md'
-]
-console.log(extLinks(arrayFiles));
+// const arrayFiles = [
+//   'C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme.md','C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme-2.md'
+// ]
+// console.log(extLinks(arrayFiles));
 
 export const validateLink = (arrayOfLinks) => {
     const promiseLink = arrayOfLinks.map((elem) => fetch(elem.href)
@@ -49,7 +49,19 @@ export const validateLink = (arrayOfLinks) => {
         }));
     return Promise.all(promiseLink);
 };
+const arrayOfLinks = [ 
+{ href: 'https://nodejs.org/es/',
+text: 'Node.js',
+file:'C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme.md' },
+{href: 'https://nodejs.org/es/',
+text: 'Node.js',
+file:'C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme.md' }
+]
 
+// validateLink(arrayOfLinks)
+// .then((res)=>{
+//   console.log(res);
+// })
 // funcion stats
 export const statsLink = (arrayOfLinks) => {
   const total = arrayOfLinks.length;
@@ -58,7 +70,7 @@ export const statsLink = (arrayOfLinks) => {
    })
     return { Total: total, Unique: unique.length }
 }
-
+console.log(statsLink(arrayOfLinks));
 // funcion stats-validate
 export const statsValidate = () => {
 
