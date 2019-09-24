@@ -1,22 +1,28 @@
+const fs = require('fs');
 const marked = require('marked');
 const fetch = require('node-fetch');
+
 export const extLinks = (arrayFiles) => {
-    const arrayOfLinks = [];
+  const arrayOfLinks = [];
     arrayFiles.forEach((file) => {
-        const readFile = fs.readFileSync(file, 'utf8');
-        const render = new marked.Renderer();
-        render.link = (href, file, text) => {
-            arrayOfLinks.push({
-                href,
-                file,
-                text,
-            });
+      const readFile = fs.readFileSync(file, 'utf8');
+      const render = new marked.Renderer();
+        render.link = (href, title, text) => {
+          arrayOfLinks.push({
+            href,
+            text,
+            file:file,
+          });
         };
-        marked(readFile, { renderer: render });
+      marked(readFile, { renderer: render });
 
     });
     return arrayOfLinks;
 };
+const arrayFiles = [
+  'C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme.md','C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme-2.md'
+]
+console.log(extLinks(arrayFiles));
 
 export const validateLink = (arrayOfLinks) => {
     const promiseLink = arrayOfLinks.map((elem) => fetch(elem.href)
@@ -46,10 +52,10 @@ export const validateLink = (arrayOfLinks) => {
 
 // funcion stats
 export const statsLink = (arrayOfLinks) => {
-    const total = arrayOfLinks.length;
-    const unique = arrayOfLinks.filter((item, index, array) => {
-        return array.indexOf(item) === index;
-    })
+  const total = arrayOfLinks.length;
+  const unique = arrayOfLinks.filter((item, index, array) => {
+    return array.indexOf(item) === index;
+   })
     return { Total: total, Unique: unique.length }
 }
 

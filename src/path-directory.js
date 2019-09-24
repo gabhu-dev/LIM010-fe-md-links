@@ -4,42 +4,43 @@ const path = require('path');
 const fs = require('fs');
 
 
-
 // existe la ruta?
 export const existRoute = (route) => {
-    if (fs.existsSync(route)) {
-        return true;
-    }
-    return false;
+  if (fs.existsSync(route)) {
+    return true;
+  }
+  return false;
 };
 
 // Es absoluta ???
 export const isAbsoluteOrRelative = (myRoute) => {
-    if (path.isAbsolute(myRoute)) {
-        return myRoute;
-    }
-    return path.resolve(myRoute);
+  if (path.isAbsolute(myRoute)) {
+    return myRoute;
+  }
+  return path.resolve(myRoute);
 };
 
 // hay archivos?
 export const isFileOrDirectory = (myRoute) => {
-    if (fs.statSync(myRoute).isFile()) {
-        return true;
-    }
-    return false;
+  if (fs.statSync(myRoute).isFile()) {
+    return true;
+  }
+  return false;
 };
+// en esta funcion seria mejor si retornara booleano
 export const extensions = (myRoute) => {
-    if (path.extname(myRoute) === '.md') {
-        return path.extname(myRoute);
-    }
-    return 'no hay extensiones';
+  if (path.extname(myRoute) === '.md') {
+    // seria mejor que retorne la ruta
+    return path.extname(myRoute);
+  }
+  return 'no hay extensiones';
 };
 
 // guardar archivos en un array
-export const saveFiles = (files) => {
-    const arrayExtensions = [];
-    arrayExtensions.push(files);
-    return arrayExtensions;
+export const saveFiles = (routes) => {
+  const arrayFiles = [];
+  arrayFiles.push(routes);
+  return arrayFiles;
 };
 
 // export const readFiles = (files) => {
