@@ -7,6 +7,9 @@
         "javascript",
         "jest"
     ],
+    "bin": {
+        "md-Links": "lib/cli.js"
+    },
     "scripts": {
         "test": "jest --coverage",
         "eslint": "eslint --ext .js src/ test/",
