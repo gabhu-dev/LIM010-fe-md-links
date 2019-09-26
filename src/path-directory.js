@@ -6,100 +6,62 @@ const fs = require('fs');
 
 // existe la ruta?
 export const existRoute = (route) => {
-  if (fs.existsSync(route)) {
-    return true;
-  }
-  return false;
+    if (fs.existsSync(route)) {
+        return true;
+    }
+    return false;
 };
 
 // Es absoluta ???
 export const isAbsoluteOrRelative = (myRoute) => {
-  if (path.isAbsolute(myRoute)) {
-    return myRoute;
-  }
-  return path.resolve(myRoute);
+    if (path.isAbsolute(myRoute)) {
+        return myRoute;
+    }
+    return path.resolve(myRoute);
 };
 
 // hay archivos?
 export const isFileOrDirectory = (myRoute) => {
-  if (fs.statSync(myRoute).isFile()) {
-    return true;
-  }
-  return false;
+    if (fs.statSync(myRoute).isFile()) {
+        return true; // es archivo
+    }
+    return false; // es directorio
 };
 // en esta funcion seria mejor si retornara booleano
 export const extensions = (myRoute) => {
-  if (path.extname(myRoute) === '.md') {
-    // seria mejor que retorne la ruta
-    return path.extname(myRoute);
-  }
-  return 'no hay extensiones';
+    if (path.extname(myRoute) === '.md') {
+        return true;
+    }
+    return false;
 };
 
 // guardar archivos en un array
-export const saveFiles = (routes) => {
-  const arrayFiles = [];
-  arrayFiles.push(routes);
-  return arrayFiles;
-};
+// export const saveFiles = (routes) => {
+//   const arrayFiles = [];
+//   arrayFiles.push(routes);
+//   return arrayFiles;
+// };
 
 // export const readFiles = (files) => {
 //   const read = fs.readFileSync(files, 'utf8');
 //   return read;
 // };
 
-// preguntar si tiene links
-// export const extLinks = (arrayFiles) => {
-//     const arrayOfLinks = [];
-//     arrayFiles.forEach((file) => {
-//         const readFile = fs.readFileSync(file, 'utf8');
-//         const render = new marked.Renderer();
-//         render.link = (href, file, text) => {
-//             arrayOfLinks.push({
-//                 href,
-//                 file,
-//                 text,
-//             });
-//         };
-//         marked(readFile, { renderer: render });
-
-//     });
-//     return arrayOfLinks;
-// };
-
-
-// console.log(extLinks('C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\pruebaREADME.md'));
-// ver si los links estan correctos
-// export const validateLink = (arrayOfLinks) => {
-// const urlLink = arrayOfLinks.map(elem => fetch(elem.href))
-//     .then((response) => {
-//         if (response.status >= 200 && response.status < 408) {
-//             return {
-//                 ...elem,
-//                 status: response.status,
-//                 statusText: response.statusText,
-//             };
-//         }
-//         return {
-//             ...elem,
-//             status: response.status,
-//             statusText: 'FAIL',
-//         };
-//     }),
-//     .catch(() => {
-//         ...elem,
-//         status: 'ERROR',
-//             statusText: 'FAIL',
-//     })));
-// return Promise.all(urlLink);
-// };
-// export const validateLink = (urlLink) => {
-//     fetch(urlLink)
-//         .then((response) => {
-//             console.log(response.status);
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         })
-// }
-console.log(validateLink('https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Utilizando_Fetch'));
+// recursion
+export const verify = (route) => {
+    const routeAbsolute = isAbsoluteOrRelative(route);
+    const fileDirectory = isFileOrDirectory(routeAbsolute);
+    const extensions = extensions(fileDirectory);
+    const arrayFiles = [];
+    if (fileDirectory === true) { // es archivo
+        if (extensions === true) {
+            arrayFiles.push(fileDirectory);
+        }
+    } else { // si filedirectoyr es igual a false 
+        const readDirectory = fs.readdirSync(routeAbsolute);
+        readDirectory.forEach(file => {
+            arrayFiles = arrayFiles.concat(verify(path.join(routeAbsolute, file)))
+        })
+    }
+    return arrayFiles;
+}
