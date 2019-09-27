@@ -50,11 +50,13 @@ export const validateLink = (arrayOfLinks) => {
 // const arrayLinks = [{
 //   href: 'https://nodejs.org/es/',
 //   text: 'Node.js',
+// eslint-disable-next-line max-len
 //   file: 'C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme.md',
 // },
 // {
 //   href: 'https://nodejs.org/s/',
 //   text: 'Node.js',
+// eslint-disable-next-line max-len
 //   file: 'C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme.md',
 // },
 // ];
@@ -72,7 +74,7 @@ export const statsLink = (arrayOfLinks) => {
   const unique = Array.from(set).length;
   return `${'Total'}${':'} ${total}, ${'Unique'}${':'}${unique}`;
 };
-  // console.log(statsLink(arrayLinks));
+// console.log(statsLink(arrayLinks));
 
 // funcion stats-validate
 // export const statsValidate = (statsLink, brokens) => ({ statsLink });
@@ -86,7 +88,7 @@ export const statsValidate = (resultStats, resultValidate) => {
 //   file:
 //  'C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme.md',
 //   statusText: 'fail',
-//   status: 404 
+//   status: 404
 // }];
 // const resultStat = 'Total: 2, Unique:2';
 // console.log(statsValidate(resultStat, ar));

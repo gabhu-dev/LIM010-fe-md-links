@@ -4,12 +4,24 @@ import { extLinks, validateLink } from './links';
 
 // const path = require('path');
 
+// export default (route, options) => new Promise((resolve) => {
+//   if (existRoute(route) && options.validate === false || options.validate === undefined) {
+//     resolve(extLinks(verify(route)));
+//   } else {
+//     validateLink(extLinks(verify(route)))
+//       .then(res => resolve(res));
+//   }
+// });
 export default (route, options) => new Promise((resolve) => {
-  if (existRoute(route) && options.validate === false) {
-    resolve(extLinks(verify(route)));
+  if (existRoute(route)) {
+    if (options.validate === false || options.validate === undefined) {
+      resolve(extLinks(verify(route)));
+    } else {
+      validateLink(extLinks(verify(route)))
+        .then(res => resolve(res));
+    }
   } else {
-    validateLink(extLinks(verify(route)))
-      .then(res => resolve(res));
+    resolve('Route not found');
   }
 });
 
