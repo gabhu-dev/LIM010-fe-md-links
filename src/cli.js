@@ -26,7 +26,7 @@ const cli = (route, validate, stats) => {
   if (route !== undefined && validate === undefined && stats === undefined) {
     mdLinks(route, { validate: false }).then(res => console.log(res));
   }
-  if (route !== undefined && validate === '--stats' && stats === undefined) {
+  if (route !== undefined && validate === '--stats') {
     console.log(statsLink(extLinks(verify(route))));
   }
   // verificar esto despues
