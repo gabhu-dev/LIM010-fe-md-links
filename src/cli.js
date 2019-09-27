@@ -2,7 +2,8 @@
 
 // Grab provided args.
 import mdLinks from './md-links';
-import { statsLink, statsValidate } from './links';
+import { statsLink, statsValidate, extLinks } from './links';
+import { verify } from './path-directory';
 
 const [, , ...args] = process.argv;
 
@@ -13,31 +14,41 @@ const [, , ...args] = process.argv;
 
 const first = args[0];
 const second = args[1];
-// const third = args[2];
+const third = args[2];
 // const capture = mdLinks(first, second);
 // console.log(first, second);
 
 
-const cli = (route, stats, validate) => {
-  if (route !== undefined && validate === '--validate') {
-    return mdLinks(route, { validate: true });
+const cli = (route, validate, stats) => {
+  if (route !== undefined && validate === '--validate' && stats === undefined) {
+    mdLinks(route, { validate: true }).then(res => console.log(res));
   }
-  if (route !== undefined && validate === undefined) {
-    return mdLinks(route, { validate: false });
+  if (route !== undefined && validate === undefined && stats === undefined) {
+    mdLinks(route, { validate: false }).then(res => console.log(res));
   }
-  if (route !== undefined && stats === '--stats') {
-    return statsLink(mdLinks(route, { validate: false }));
+  if (route !== undefined && validate === '--stats' && stats === undefined) {
+    console.log(statsLink(extLinks(verify(route))));
   }
   // verificar esto despues
-  if (route !== undefined && stats === '--stats' && validate === '--validate') {
-    return statsValidate(statsLink(mdLinks(route, { validate: false })), mdLinks(route, { validate: true }));
+  if (route !== undefined && validate === '--stats' && stats === '--validate') {
+    const resultValidate = mdLinks(route, { validate: true })
+      .then((res) => {
+        const resultStats = statsLink(extLinks(verify(route)));
+        const result = statsValidate(res, resultStats);
+        console.log(result);
+      });
   }
-  return console.log('Route not found');
+  if (route === undefined && validate === undefined && stats === undefined) {
+    console.log('Enter a path');
+  }
+  if(route !== undefined && validate !== '--validate' && stats !== '--stats') {
+    console.log('Enter a validate command ');
+  }
 };
 
-// console.log(cli(first, second, third));
+cli(first, second, third);
 // mdLinks('readme.md', { validate: true })
 //   .then(res => console.log(res));
-mdLinks(first, second)
-  .then(res => console.log(res));
-console.log(first, second);
+// mdLinks(first, second)
+//   .then(res => console.log(res));
+// console.log(first, second);

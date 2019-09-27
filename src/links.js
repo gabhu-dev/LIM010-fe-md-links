@@ -78,7 +78,7 @@ export const statsLink = (arrayOfLinks) => {
 
 // funcion stats-validate
 // export const statsValidate = (statsLink, brokens) => ({ statsLink });
-export const statsValidate = (resultStats, resultValidate) => {
+export const statsValidate = (resultValidate, resultStats) => {
   const brokens = resultValidate.filter(elem => elem.statusText === 'fail').length;
   return `${resultStats} ${','} ${'Brokens'}${':'} ${brokens}`;
 };
@@ -91,4 +91,4 @@ export const statsValidate = (resultStats, resultValidate) => {
 //   status: 404
 // }];
 // const resultStat = 'Total: 2, Unique:2';
-// console.log(statsValidate(resultStat, ar));
+// console.log(statsValidate(ar,resultStat));

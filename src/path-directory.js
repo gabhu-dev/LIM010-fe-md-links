@@ -63,4 +63,4 @@ export const verify = (route) => {
   }
   return arrayFiles;
 };
-console.log(verify('./readme.md'));
+// console.log(verify('./readme.md'));
