@@ -4,29 +4,26 @@ import { extLinks, validateLink } from './links';
 
 // const path = require('path');
 
-// export default (route, options) => new Promise((resolve) => {
-//   if (existRoute(route) && options.validate === false || options.validate === undefined) {
-//     resolve(extLinks(verify(route)));
-//   } else {
-//     validateLink(extLinks(verify(route)))
-//       .then(res => resolve(res));
-//   }
-// });
 export default (route, options) => new Promise((resolve) => {
-  if (existRoute(route)) {
-    if (options.validate === false || options.validate === undefined) {
-      const resolveFirst = resolve(extLinks(verify(route)));
-      resolveFirst.forEach(element => {
-  
-      });// deberia retornar un string
-    } else {
-      validateLink(extLinks(verify(route)))
-        .then(res => resolve(res)); // deberia retornar un string
-    }
+  if (existRoute(route) && options.validate === false) {
+    resolve(extLinks(verify(route)));
   } else {
-    resolve('Route not found');
+    validateLink(extLinks(verify(route)))
+      .then(res => resolve(res));
   }
 });
+// export default (route, options) => new Promise((resolve) => {
+//   if (existRoute(route)) {
+//     if (options.validate === false) {
+//       resolve(extLinks(verify(route)));
+//     } else {
+//       validateLink(extLinks(verify(route)))
+//         .then(res => resolve(res)); // deberia retornar un string
+//     }
+//   } else {
+//     resolve('Route not found');
+//   }
+// });
 
 // mdLinks(path.join((process.cwd())), '.readme.md', { validate: false })
 //   .then(res => console.log(res));
