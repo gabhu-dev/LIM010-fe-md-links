@@ -8,8 +8,7 @@ export default (route, options) => new Promise((resolve) => {
     if (existRoute(route) && options.validate === false) {
         resolve(extLinks(verify(route)));
     } else {
-        validateLink(extLinks(verify(route)))
-            .then(res => resolve(res))
+        resolve(validateLink(extLinks(verify(route))))
     }
 });
 // export default (route, options) => new Promise((resolve) => {
@@ -27,5 +26,5 @@ export default (route, options) => new Promise((resolve) => {
 
 // mdLinks(path.join((process.cwd())), '.readme.md', { validate: false })
 //   .then(res => console.log(res));
-// mdLinks('./readme.md', { validate: true })
+// mdLinks('C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\pruebas\\pruebaREADME.md', { validate: true })
 //   .then(res => console.log(res));

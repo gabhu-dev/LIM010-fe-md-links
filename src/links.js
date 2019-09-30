@@ -3,20 +3,20 @@ const marked = require('marked');
 const fetch = require('node-fetch');
 
 export const extLinks = (arrayFiles) => {
-    const arrayOfLinks = [];
-    arrayFiles.forEach((file) => {
-        const readFile = fs.readFileSync(file, 'utf8');
-        const render = new marked.Renderer();
-        render.link = (href, title, text) => {
-            arrayOfLinks.push({
-                href,
-                text,
-                file,
-            });
-        };
-        marked(readFile, { renderer: render });
-    });
-    return arrayOfLinks;
+  const arrayOfLinks = [];
+  arrayFiles.forEach((file) => {
+    const readFile = fs.readFileSync(file, 'utf8');
+    const render = new marked.Renderer();
+    render.link = (href, title, text) => {
+      arrayOfLinks.push({
+          href,
+          text,
+          file,
+      });
+    };
+    marked(readFile, { renderer: render });
+  });
+  return arrayOfLinks;
 };
 // const arrayFiles = [
 // eslint-disable-next-line max-len
@@ -25,27 +25,27 @@ export const extLinks = (arrayFiles) => {
 // console.log(extLinks(arrayFiles));
 
 export const validateLink = (arrayOfLinks) => {
-    const promiseLink = arrayOfLinks.map(elem => fetch(elem.href)
-        // response es devuelto cuando fetch ha sido satisfactoria
-        .then((response) => {
-            // respuesta satisfactoria
-            if (response.status >= 200 && response.status < 400) {
-                return {
-                    ...elem,
-                    statusText: response.statusText, // ok
-                    status: response.status,
-                };
-            }
-            // respuesta no satisfactoria
-            return {
-                ...elem,
-                statusText: 'fail',
-                status: response.status,
-            };
-        })
-        // problemas en la peticion de fetch
-        .catch(err => err));
-    return Promise.all(promiseLink);
+  const promiseLink = arrayOfLinks.map(elem => fetch(elem.href)
+      // response es devuelto cuando fetch ha sido satisfactoria
+    .then((response) => {
+        // respuesta satisfactoria
+        if (response.status >= 200 && response.status < 400) {
+          return {
+            ...elem,
+            statusText: response.statusText, // ok
+            status: response.status,
+          };
+        } 
+        // respuesta no satisfactoria
+        return {
+            ...elem,
+            statusText: 'fail',
+            status: response.status,
+        };
+    })
+      // problemas en la peticion de fetch
+      .catch(err => err));
+  return Promise.all(promiseLink);
 };
 // const arrayLinks = [{
 //   href: 'https://nodejs.org/es/',
@@ -68,19 +68,19 @@ export const validateLink = (arrayOfLinks) => {
 
 // funcion stats -- verificar
 export const statsLink = (arrayOfLinks) => {
-    const total = arrayOfLinks.length;
-    const arrMap = arrayOfLinks.map(elem => elem.href);
-    const set = new Set(arrMap);
-    const unique = Array.from(set).length;
-    return `Total : ${total}, Unique : ${unique}`;
+  const total = arrayOfLinks.length;
+  const arrMap = arrayOfLinks.map(elem => elem.href);
+  const set = new Set(arrMap);
+  const unique = Array.from(set).length;
+  return `Total : ${total}, Unique : ${unique}`;
 };
 // console.log(statsLink(arrayLinks));
 
 // funcion stats-validate
 // export const statsValidate = (statsLink, brokens) => ({ statsLink });
 export const statsValidate = (resultValidate, resultStats) => {
-    const brokens = resultValidate.filter(elem => elem.statusText === 'fail').length;
-    return `${resultStats} , Brokens : ${brokens}`;
+  const brokens = resultValidate.filter(elem => elem.statusText === 'fail').length;
+  return `${resultStats} , Brokens : ${brokens}`;
 };
 // const ar = [{
 //  href: 'https://nodejs.org/s/',
