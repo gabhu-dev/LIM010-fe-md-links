@@ -3,7 +3,7 @@
 // Grab provided args.
 import mdLinks from './md-links';
 import { statsLink, statsValidate, extLinks } from './links';
-import { verify, existRoute } from './path-directory';
+import { verify } from './path-directory';
 
 const [, , ...args] = process.argv;
 
