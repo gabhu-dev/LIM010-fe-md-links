@@ -9,9 +9,9 @@ export const extLinks = (arrayFiles) => {
     const render = new marked.Renderer();
     render.link = (href, title, text) => {
       arrayOfLinks.push({
-          href,
-          text,
-          file,
+        href,
+        text,
+        file,
       });
     };
     marked(readFile, { renderer: render });
@@ -26,25 +26,25 @@ export const extLinks = (arrayFiles) => {
 
 export const validateLink = (arrayOfLinks) => {
   const promiseLink = arrayOfLinks.map(elem => fetch(elem.href)
-      // response es devuelto cuando fetch ha sido satisfactoria
+  // response es devuelto cuando fetch ha sido satisfactoria
     .then((response) => {
-        // respuesta satisfactoria
-        if (response.status >= 200 && response.status < 400) {
-          return {
-            ...elem,
-            statusText: response.statusText, // ok
-            status: response.status,
-          };
-        } 
-        // respuesta no satisfactoria
+      // respuesta satisfactoria
+      if (response.status >= 200 && response.status < 400) {
         return {
-            ...elem,
-            statusText: 'fail',
-            status: response.status,
+          ...elem,
+          statusText: response.statusText, // ok
+          status: response.status,
         };
+      }
+      // respuesta no satisfactoria
+      return {
+        ...elem,
+        statusText: 'fail',
+        status: response.status,
+      };
     })
-      // problemas en la peticion de fetch
-      .catch(err => err));
+  // problemas en la peticion de fetch
+    .catch(err => err));
   return Promise.all(promiseLink);
 };
 // const arrayLinks = [{
@@ -72,15 +72,15 @@ export const statsLink = (arrayOfLinks) => {
   const arrMap = arrayOfLinks.map(elem => elem.href);
   const set = new Set(arrMap);
   const unique = Array.from(set).length;
-  return `Total : ${total}, Unique : ${unique}`;
+  return `Total : ${total}\nUnique : ${unique}`;
 };
 // console.log(statsLink(arrayLinks));
 
 // funcion stats-validate
 // export const statsValidate = (statsLink, brokens) => ({ statsLink });
 export const statsValidate = (resultValidate, resultStats) => {
-  const brokens = resultValidate.filter(elem => elem.statusText === 'fail').length;
-  return `${resultStats} , Brokens : ${brokens}`;
+  const broken = resultValidate.filter(elem => elem.statusText === 'fail').length;
+  return `${resultStats}\nBrokens : ${broken}`;
 };
 // const ar = [{
 //  href: 'https://nodejs.org/s/',

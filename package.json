@@ -8,7 +8,7 @@
         "jest"
     ],
     "bin": {
-        "md-Links": "lib/cli.js"
+        "md-links": "lib/cli.js"
     },
     "scripts": {
         "test": "jest --coverage",
