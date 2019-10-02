@@ -25,7 +25,7 @@ export const cli = (path, optionOne, optionTwo) => new Promise((resolve) => {
         resolve(out);
       });
   } else if (path !== undefined && optionOne === undefined && optionTwo === undefined) {
-    mdLinks(path, { validate: false }) // extrae solo los links
+    mdLinks(path, { validate: false })
       .then((res) => {
         res.forEach((element) => {
           const vals = Object.values(element);
@@ -35,7 +35,7 @@ export const cli = (path, optionOne, optionTwo) => new Promise((resolve) => {
       })
       .catch(() => resolve('Route not found'));
   } else if (path !== undefined && optionOne === '--stats' && optionTwo === undefined) {
-    resolve(statsLink(extLinks(verify(path)))); //
+    resolve(statsLink(extLinks(verify(path))));
   } else if (path !== undefined && optionOne === '--stats' && optionTwo === '--validate') {
     mdLinks(path, { validate: true })
       .then((res) => {
