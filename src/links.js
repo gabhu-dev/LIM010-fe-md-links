@@ -34,8 +34,7 @@ export const validateLink = (arrayOfLinks) => {
         statusText: 'fail',
         status: response.status,
       };
-    })
-    .catch(() => console.log('error de red')));
+    }));
   return Promise.all(promiseLink);
 };
 
