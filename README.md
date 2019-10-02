@@ -14,7 +14,7 @@
 ### Instalar en la terminal
 
 ```bash
-npm install --global <gabhu-dev>/md-links
+npm install --global gabhu-dev/md-links
 ```
 
 ### USO
