@@ -44,7 +44,7 @@ export const validateLink = (arrayOfLinks) => {
       };
     })
   // problemas en la peticion de fetch
-    .catch(err => err));
+    .catch(() => console.log('error de red')));
   return Promise.all(promiseLink);
 };
 // const arrayLinks = [{
@@ -80,7 +80,7 @@ export const statsLink = (arrayOfLinks) => {
 // export const statsValidate = (statsLink, brokens) => ({ statsLink });
 export const statsValidate = (resultValidate, resultStats) => {
   const broken = resultValidate.filter(elem => elem.statusText === 'fail').length;
-  return `${resultStats}\nBrokens : ${broken}`;
+  return `${resultStats}\nBroken : ${broken}`;
 };
 // const ar = [{
 //  href: 'https://nodejs.org/s/',

@@ -26,7 +26,7 @@ const linksBad = [{
     status: 404
 }]
 
-const resultStat = 'Total : 2, Unique : 2';
+const resultStat = 'Total : 2\nUnique : 2';
 
 describe('funcion extLinks', () => {
     it('deberia poder leer y extraer todos los links', () => {
@@ -53,12 +53,12 @@ describe('funcion validate Link', () => {
 
 describe('funcion statsLink', () => {
     it('deberia retornar un objeto con 2 propiedades', () => {
-        expect(statsLink(arrayOfLinks)).toBe('Total : 1, Unique : 1');
+        expect(statsLink(arrayOfLinks)).toBe('Total : 1\nUnique : 1');
     })
 })
 
 describe('funcion statsValidate', () => {
     it('deberia retornar total,unique,brokens', () => {
-        expect(statsValidate(linksBad, resultStat)).toBe('Total : 2, Unique : 2 , Brokens : 1')
+        expect(statsValidate(linksBad, resultStat)).toBe('Total : 2\nUnique : 2\nBroken : 1')
     })
 })
