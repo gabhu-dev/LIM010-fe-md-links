@@ -35,16 +35,14 @@ export const validateLink = (arrayOfLinks) => {
         status: response.status,
       };
     })
-    .catch({
+    .catch(err => ({
       ...elem,
-      statusText:'ENOTFOUND',
-      status :'error',
-    })
-    )
+      statusText: 'ENOTFOUND',
+      status: err.message,
+    })));
 
   return Promise.all(promiseLink);
 };
-
 
 export const statsLink = (arrayOfLinks) => {
   const total = arrayOfLinks.length;
