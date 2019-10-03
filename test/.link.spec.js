@@ -26,6 +26,11 @@ const linksBad = [{
   status: 404
 }]
 
+const bad =[{
+  href :'https://nodejsrg/e/',
+  text : 'node.js',
+  file : 'C:\\Users\\LABORATORIA D0082\\Desktop\\project markdown\\LIM010-fe-md-links\\lib\\readme.md'
+}]
 const resultStat = 'Total : 2\nUnique : 2';
 
 describe('funcion extLinks', () => {
@@ -49,6 +54,13 @@ describe('funcion validate Link', () => {
         done()
       })
   });
+  it('deberia de retornar error',(done)=>{
+    validateLink(bad)
+      .then((res)=>{
+        expect(res.code).toBe('ENOTFOUND');
+        done()
+      })
+    })
 });
 
 describe('funcion statsLink', () => {

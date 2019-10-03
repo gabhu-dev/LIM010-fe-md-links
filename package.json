@@ -2,7 +2,7 @@
     "name": "lim010-fe-md-links",
     "version": "1.0.0",
     "description": "markdown links",
-    "main": "index.js",
+    "main": "lib/md-links.js",
     "keywords": [
         "javascript",
         "jest"

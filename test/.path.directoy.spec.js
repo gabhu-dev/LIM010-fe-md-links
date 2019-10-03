@@ -6,7 +6,7 @@ describe('Esta función debería saber distinguir la absoluta de la relativa', (
     expect(isAbsoluteOrRelative(process.cwd())).toBe(process.cwd());
   })
   it('deberia poder distinguir una relativa', () => {
-    expect(isAbsoluteOrRelative('src\\path-directory.js')).toBe(path.join(process.cwd(), 'src', 'path-directory.js'));
+    expect(isAbsoluteOrRelative('./README.md')).toBe(path.join(process.cwd(),'README.md'));
   })
 })
 

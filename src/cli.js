@@ -6,7 +6,6 @@ import { verify } from './path-directory';
 
 const [, , ...args] = process.argv;
 
-
 const first = args[0];
 const second = args[1];
 const third = args[2];

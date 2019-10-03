@@ -34,7 +34,14 @@ export const validateLink = (arrayOfLinks) => {
         statusText: 'fail',
         status: response.status,
       };
-    }));
+    })
+    .catch({
+      ...elem,
+      statusText:'ENOTFOUND',
+      status :'error',
+    })
+    )
+
   return Promise.all(promiseLink);
 };
 
