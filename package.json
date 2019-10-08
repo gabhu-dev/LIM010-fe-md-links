@@ -38,6 +38,7 @@
         "marked": "^0.7.0",
         "node-fetch": "^2.6.0"
     },
+
     "author": "Gabriela Ignacio",
     "license": "MIT",
     "bugs": {
