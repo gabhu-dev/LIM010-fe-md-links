@@ -1,7 +1,12 @@
 import { extLinks, validateLink, statsLink, statsValidate } from '../src/links.js';
 
 const path = require('path');
-const fetchMock = require('../_mocks_/node-fetch.js');
+// const fetchMock = require('../_mocks_/node-fetch.js');
+// preguntar sobre:
+// los diferebtes archvios para test
+// los problemas que tengo para hacer el lmock,si pasa un array y no solo el link
+// problemas con la identacion de los tests
+// implorar ayuda
 // crear unn array
 const arrayFiles = [
     path.join(process.cwd(), 'pruebas', 'pruebaREADME.md')
