@@ -1,6 +1,7 @@
 import { extLinks, validateLink, statsLink, statsValidate } from '../src/links.js';
 
 const path = require('path');
+const fetchMock = require('../_mocks_/node-fetch.js');
 // crear unn array
 const arrayFiles = [
     path.join(process.cwd(), 'pruebas', 'pruebaREADME.md')
@@ -39,6 +40,12 @@ describe('funcion extLinks', () => {
     })
 })
 
+// describe ('function validate Links con mocks',()=>{
+//   it('deberia poder testear sin internet',()=>{
+//     fetchMock
+//     .mock('')
+//   })
+// })
 describe('funcion validate Link', () => {
     it('deberia retornar un status con 200', (done) => {
         validateLink(arrayOfLinks)

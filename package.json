@@ -29,6 +29,7 @@
         "eslint-config-airbnb-base": "^13.2.0",
         "eslint-plugin-import": "^2.18.2",
         "eslint-plugin-jest": "^22.1.2",
+        "fetch-mock": "^7.5.1",
         "jest": "^24.9.0"
     },
     "dependencies": {
@@ -38,7 +39,6 @@
         "marked": "^0.7.0",
         "node-fetch": "^2.6.0"
     },
-
     "author": "Gabriela Ignacio",
     "license": "MIT",
     "bugs": {
